@@ -1,12 +1,12 @@
 
-# f6mt HAL libraries
+# fx3q HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
-    libhealthd.f6mt
+    libhealthd.fx3q
 
 # Inherit from the proprietary version
--include vendor/lge/f6mt/BoardConfigVendor.mk
+-include vendor/lge/fx3q/BoardConfigVendor.mk
 
-TARGET_BOARD_INFO_FILE := device/lge/f6mt/board-info.txt
+TARGET_BOARD_INFO_FILE := device/lge/fx3q/board-info.txt
 
 BOARD_VENDOR := LGE
 TARGET_NO_BOOTLOADER := true
@@ -25,14 +25,14 @@ TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK      := device/lge/f6mt/releasetools/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK      := device/lge/fx3q/releasetools/mkbootimg.mk
 BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
-TARGET_KERNEL_SOURCE         := kernel/lge/f6mt
-TARGET_KERNEL_CONFIG         := cm_f6mt_defconfig
-TARGET_SPECIFIC_HEADER_PATH := device/lge/f6mt/include
+TARGET_KERNEL_SOURCE         := kernel/lge/fx3q
+TARGET_KERNEL_CONFIG         := cm_fx3q_defconfig
+TARGET_SPECIFIC_HEADER_PATH := device/lge/fx3q/include
 TARGET_NO_INITLOGO := true
 
 # Krait optimizations
@@ -48,13 +48,13 @@ TARGET_KRAIT_BIONIC_PLDSIZE := 64
 TARGET_MPDECISION_BOOST_SOCKET := /dev/socket/mpdecision/touchboost
 
 # Hardware tunables framework
-BOARD_HARDWARE_CLASS := device/lge/f6mt/cmhw/
+BOARD_HARDWARE_CLASS := device/lge/fx3q/cmhw/
 
 # Recovery
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-TARGET_RECOVERY_FSTAB := device/lge/f6mt/ramdisk/fstab.qcom
-TARGET_RECOVERY_INITRC := device/lge/f6mt/recovery/root/init.recovery.rc
+TARGET_RECOVERY_FSTAB := device/lge/fx3q/ramdisk/fstab.qcom
+TARGET_RECOVERY_INITRC := device/lge/fx3q/recovery/root/init.recovery.rc
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/lcd/panel/backlight\"
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
@@ -78,7 +78,7 @@ TARGET_USES_SF_BYPASS := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 TARGET_DISPLAY_INSECURE_MM_HEAP := true
-BOARD_EGL_CFG := device/lge/f6mt/proprietary/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/lge/fx3q/proprietary/lib/egl/egl.cfg
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -118,8 +118,8 @@ WPA_SUPPLICANT_VERSION 		:= VER_0_8_X
 # BLUETOOTH 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/f6mt/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/lge/f6mt/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/fx3q/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/lge/fx3q/bluetooth/libbt_vndcfg.txt
 
 # GPS
 BOARD_HAVE_NEW_QC_GPS := true
@@ -136,14 +136,14 @@ BOARD_HAVE_NFC := true
 BOARD_USES_QC_TIME_SERVICES := true
 
 # PowerHAL
-POWERHAL_EXTENSION := f6mt
+POWERHAL_EXTENSION := fx3q
 TARGET_POWERHAL_TOUCH_BOOST := true
 
 # Charger
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_CHARGER_RES := device/lge/f6mt/ramdisk/res/images/charger
+BOARD_CHARGER_RES := device/lge/fx3q/ramdisk/res/images/charger
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 24
@@ -151,19 +151,19 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 
 # Releasetools
 TARGET_PROVIDES_RELEASETOOLS := true
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/f6mt/releasetools/ota_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/fx3q/releasetools/ota_from_target_files
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := LGMS500,f6mt
+TARGET_OTA_ASSERT_DEVICE := LGMS500,fx3q
 
 # Vibrator
-#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/f6mt/vibrator/tspdrv.c
+#BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/fx3q/vibrator/tspdrv.c
 
 # Web
 WEBRTC_BUILD_NEON_LIBS := true
 
 BOARD_SEPOLICY_DIRS := \
-       device/lge/f6mt/sepolicy
+       device/lge/fx3q/sepolicy
 
 BOARD_SEPOLICY_UNION := \
        app.te \

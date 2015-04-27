@@ -18,7 +18,7 @@ ifeq ($(TARGET_BOARD_PLATFORM),msm8960)
 
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := healthd_board_default.cpp
-LOCAL_MODULE := libhealthd.f6mt
+LOCAL_MODULE := libhealthd.fx3q
 LOCAL_C_INCLUDES := system/core/healthd
 include $(BUILD_STATIC_LIBRARY)
 endif

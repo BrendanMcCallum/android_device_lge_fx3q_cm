@@ -1,4 +1,4 @@
-ifeq ($(POWERHAL_EXTENSION),f6mt)
+ifeq ($(POWERHAL_EXTENSION),fx3q)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -12,7 +12,7 @@ LOCAL_SHARED_LIBRARIES := liblog libcutils libdl
 LOCAL_SRC_FILES := \
                    power.c \
 
-LOCAL_MODULE:= power.f6mt
+LOCAL_MODULE:= power.fx3q
 LOCAL_MODULE_TAGS := optional
 
 ifneq ($(TARGET_MPDECISION_BOOST_SOCKET),)

@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "f6mt-lights-hal"
+#define LOG_TAG "fx3q-lights-hal"
 
 #include <cutils/log.h>
 #include <stdint.h>
