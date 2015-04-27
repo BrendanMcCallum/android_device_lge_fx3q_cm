@@ -1,3 +1,7 @@
+# proprietary LGE files
+proprietary/
+ramdisk/
+
 # Built application files
 *.apk
 *.ap_

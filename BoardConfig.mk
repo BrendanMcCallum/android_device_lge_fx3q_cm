@@ -35,6 +35,19 @@ TARGET_KERNEL_CONFIG         := cm_fx3q_defconfig
 TARGET_SPECIFIC_HEADER_PATH := device/lge/fx3q/include
 TARGET_NO_INITLOGO := true
 
+# Kernel build options either prebuilt:
+TARGET_PREBUILT_KERNEL := device/lge/fx3q/kernel
+# ... or as recommended by CM - path to the sources and config:
+TARGET_KERNEL_SOURCE := kernel/lge/fx3q
+#TARGET_KERNEL_SOURCE := kernel/lge/fx3q_debugging
+TARGET_PRODUCT=fx3q_tmo_us
+TARGET_KERNEL_CONFIG := fx3q_xdajog_defconfig
+# Use GCC 4.6 to compile the kernel as recommended by LG:
+ARM_EABI_TOOLCHAIN :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
+
+# this will disable init.rc build and using LGE ones instead
+#TARGET_PROVIDES_INIT_RC := true
+
 # Krait optimizations
 ARCH_ARM_HAVE_NEON := true
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
@@ -50,11 +63,38 @@ TARGET_MPDECISION_BOOST_SOCKET := /dev/socket/mpdecision/touchboost
 # Hardware tunables framework
 BOARD_HARDWARE_CLASS := device/lge/fx3q/cmhw/
 
+#######################################################################
+# TWRP
+#
+DEVICE_RESOLUTION := 480x800
+TARGET_USERIMAGES_USE_F2FS := false
+# This was driving me nuts and at the end it is so easy.. the support for /data/media
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+# Support for device encryption in TWRP (JB or higher)
+#TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_JB_CRYPTO := true
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+TW_CRYPTO_MNT_POINT := "/data"
+TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,barrier=1,noauto_da_alloc,discard"
+TW_CRYPTO_FS_FLAGS := "0x00000406"
+TW_CRYPTO_KEY_LOC := "footer"
+# removes the reboot bootloader button from the reboot menu cause we have no fastboot
+TW_NO_REBOOT_BOOTLOADER := true
+# defaults to external storage instead of internal on dual storage devices
+TW_DEFAULT_EXTERNAL_STORAGE := true
+#
+# TWRP END
+#######################################################################
+
 # Recovery
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-TARGET_RECOVERY_FSTAB := device/lge/fx3q/ramdisk/fstab.qcom
-TARGET_RECOVERY_INITRC := device/lge/fx3q/recovery/root/init.recovery.rc
+#TARGET_RECOVERY_FSTAB := device/lge/fx3q/ramdisk/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/lge/fx3q/twrp_min.fstab
+#TARGET_RECOVERY_INITRC := device/lge/fx3q/recovery/root/init.recovery.rc
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/lcd/panel/backlight\"
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
@@ -154,7 +194,7 @@ TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/fx3q/releasetools/ota_from_target_files
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := LGMS500,fx3q
+TARGET_OTA_ASSERT_DEVICE := LGMS500,fx3q,F3Q,D520
 
 # Vibrator
 #BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/fx3q/vibrator/tspdrv.c
