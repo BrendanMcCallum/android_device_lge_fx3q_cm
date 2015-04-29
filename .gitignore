@@ -2,6 +2,10 @@
 proprietary/
 ramdisk/
 
+# kernel binaries
+kernel
+kernel-new
+
 # Built application files
 *.apk
 *.ap_

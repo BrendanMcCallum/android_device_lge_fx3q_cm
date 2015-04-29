@@ -26,12 +26,11 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK      := device/lge/fx3q/releasetools/mkbootimg.mk
-BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache
+#BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache
+BOARD_KERNEL_CMDLINE         := CMDLINE WILL BE IGNORED BY KERNEL. SO YOU NEED TO CHANGE KERNEL WHEN YOU WANT OTHER BOOT ARGS. xdajog.
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
-TARGET_KERNEL_SOURCE         := kernel/lge/fx3q
-TARGET_KERNEL_CONFIG         := cm_fx3q_defconfig
 TARGET_SPECIFIC_HEADER_PATH := device/lge/fx3q/include
 TARGET_NO_INITLOGO := true
 
@@ -44,6 +43,8 @@ TARGET_PRODUCT=fx3q_tmo_us
 TARGET_KERNEL_CONFIG := fx3q_xdajog_defconfig
 # Use GCC 4.6 to compile the kernel as recommended by LG:
 ARM_EABI_TOOLCHAIN :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
+
+# CMDLINE WILL BE IGNORED BY KERNEL! SO YOU NEED TO CHANGE KERNEL WHEN YOU WANT OTHER BOOT ARGS. xdajog.
 
 # this will disable init.rc build and using LGE ones instead
 #TARGET_PROVIDES_INIT_RC := true
@@ -118,7 +119,7 @@ TARGET_USES_SF_BYPASS := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 TARGET_DISPLAY_INSECURE_MM_HEAP := true
-BOARD_EGL_CFG := device/lge/fx3q/proprietary/lib/egl/egl.cfg
+BOARD_EGL_CFG := vendor/lge/fx3q/proprietary/lib/egl/egl.cfg
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -126,12 +127,13 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Audio
 TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_ALSA_AUDIO := true
-BOARD_USES_LEGACY_ALSA_AUDIO := true
+#BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_QCOM_MEDIA_VARIANT := caf
+#TARGET_QCOM_MEDIA_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := legacy
 TARGET_DISPLAY_USE_RETIRE_FENCE := false
 
 # Camera
@@ -178,6 +180,10 @@ BOARD_USES_QC_TIME_SERVICES := true
 # PowerHAL
 POWERHAL_EXTENSION := fx3q
 TARGET_POWERHAL_TOUCH_BOOST := true
+
+# https://groups.google.com/forum/#!topic/cyanogenmod-dev/7GnJqmARVRQ
+# Use CM PowerHAL by default
+# TARGET_POWERHAL_VARIANT := cm
 
 # Charger
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging

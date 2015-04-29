@@ -18,7 +18,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # fx3q vendor blobs
-$(call inherit-product-if-exists, vendor/lge/fx3q/fx3q-vendor-blobs.mk)
+#$(call inherit-product-if-exists, vendor/lge/fx3q/fx3q-vendor-blobs.mk)
+$(call inherit-product, vendor/lge/fx3q/fx3q-vendor-blobs.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \

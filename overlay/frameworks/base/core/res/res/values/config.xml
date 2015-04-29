@@ -246,6 +246,6 @@
     <string name="config_datause_iface">rmnet0</string>
 
     <!-- Set to false or else wakelock problem happens. -->
-    <bool name="config_bluetooth_adapter_quick_switch">false</bool>
+    <!--<bool name="config_bluetooth_adapter_quick_switch">false</bool>-->
 
 </resources>
