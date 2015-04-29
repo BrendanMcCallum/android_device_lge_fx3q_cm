@@ -5,6 +5,7 @@ ramdisk/
 # kernel binaries
 kernel
 kernel-new
+sediKERNEL*
 
 # Built application files
 *.apk
