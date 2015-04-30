@@ -1,3 +1,5 @@
+# nasty build error:
+$(shell mkdir -p $(OUT_DIR)/target/product/fx3q/obj/SHARED_LIBRARIES/libqdutils_intermediates/export_includes)
 
 # fx3q HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
@@ -93,8 +95,8 @@ TW_DEFAULT_EXTERNAL_STORAGE := true
 # Recovery
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-#TARGET_RECOVERY_FSTAB := device/lge/fx3q/ramdisk/fstab.qcom
-TARGET_RECOVERY_FSTAB := device/lge/fx3q/twrp_min.fstab
+TARGET_RECOVERY_FSTAB := device/lge/fx3q/ramdisk/fstab.qcom
+#TARGET_RECOVERY_FSTAB := device/lge/fx3q/twrp_min.fstab
 #TARGET_RECOVERY_INITRC := device/lge/fx3q/recovery/root/init.recovery.rc
 TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/lcd/panel/backlight\"
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
@@ -132,8 +134,8 @@ TARGET_USES_QCOM_COMPRESSED_AUDIO := true
 
 # Media
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-#TARGET_QCOM_MEDIA_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := legacy
+TARGET_QCOM_MEDIA_VARIANT := caf
+#TARGET_QCOM_MEDIA_VARIANT := legacy
 TARGET_DISPLAY_USE_RETIRE_FENCE := false
 
 # Camera
@@ -183,7 +185,7 @@ TARGET_POWERHAL_TOUCH_BOOST := true
 
 # https://groups.google.com/forum/#!topic/cyanogenmod-dev/7GnJqmARVRQ
 # Use CM PowerHAL by default
-# TARGET_POWERHAL_VARIANT := cm
+TARGET_POWERHAL_VARIANT := cm
 
 # Charger
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
