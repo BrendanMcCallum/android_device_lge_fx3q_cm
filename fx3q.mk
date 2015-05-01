@@ -21,6 +21,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 #$(call inherit-product-if-exists, vendor/lge/fx3q/fx3q-vendor-blobs.mk)
 $(call inherit-product, vendor/lge/fx3q/fx3q-vendor-blobs.mk)
 
+PRODUCT_COPY_FILES += \
+    vendor/lge/fx3q/proprietary/lib/libqdutils.so:obj/lib/libqdutils.so
+
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \

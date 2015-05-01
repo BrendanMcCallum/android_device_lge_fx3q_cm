@@ -162,7 +162,7 @@ lib/libbt-aptx-4.0.3.so
 lib/libbt.so
 lib/libbtio.so
 lib/libbtsvc.so
-lib/libc.so
+#lib/libc.so
 lib/libc2d2_a3xx.so
 lib/libc2d2_z180.so
 lib/libcamera_client.so

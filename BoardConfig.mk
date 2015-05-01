@@ -1,5 +1,6 @@
 # nasty build error:
-$(shell mkdir -p $(OUT_DIR)/target/product/fx3q/obj/SHARED_LIBRARIES/libqdutils_intermediates/export_includes)
+$(shell mkdir -p $(OUT_DIR)/target/product/fx3q/obj/SHARED_LIBRARIES/libqdutils_intermediates/)
+$(shell touch $(OUT_DIR)/target/product/fx3q/obj/SHARED_LIBRARIES/libqdutils_intermediates/import_includes)
 
 # fx3q HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \

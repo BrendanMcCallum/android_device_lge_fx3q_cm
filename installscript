@@ -1,18 +1,23 @@
 show_progress(0.500000, 0);
-ui_print("::::::::::::::::::::::::::::::::");
-ui_print("::                            ::");
-ui_print("::     White Droid By DM47021 ::");
-ui_print("::       For LG Optimus F6    ::");
-ui_print("::          Metro PCS         ::");
-ui_print("::                            ::");
-ui_print("::                            ::");
-ui_print("::     by                      ::");
-ui_print("::         Dm47021            ::");
-ui_print("::                            ::");
-ui_print("::        special Thanks      ::");
-ui_print("::        to djrbliss         ::");
-ui_print("::        for LOKI            ::");
-ui_print("::::::::::::::::::::::::::::::::");
+ui_print("##############################");
+ui_print("#                            #");
+ui_print("#       sediROM for the      #");
+ui_print("#       LG Optimus F3Q       #");
+ui_print("####----------------------####");
+ui_print("#            by              #");
+ui_print("#          xdajog            #");
+ui_print("####----------------------####");
+ui_print("#   special thanks to:       #");
+ui_print("#   - djrbliss (LOKI)        #");
+ui_print("#   - DM47021 (device tree)  #");
+ui_print("#                            #");
+ui_print("#   and the donaters:        #"); 
+ui_print("#   - pelago, Zombeezy       #");
+ui_print("#   - joel.maxuel, ajoh99    #");
+ui_print("#   - KellyC, misbehave      #");
+ui_print("#   - whitelynx              #");
+ui_print("#                            #");
+ui_print("##############################");
 ui_print("");
 unmount("/system");
 show_progress(0.500000, 0);
@@ -264,15 +269,15 @@ set_perm(0, 0, 06755, "/system/xbin/su");
 show_progress(0.200000, 0);
 show_progress(0.200000, 10);
 show_progress(0.200000, 10);
-ui_print("Flashing Lokified Kernel");
-package_extract_file("boot.lok", "/dev/block/platform/msm_sdcc.1/by-name/boot");
+#currently disabled
+#ui_print("Flashing Lokified Kernel");
+#package_extract_file("boot.lok", "/dev/block/platform/msm_sdcc.1/by-name/boot");
 show_progress(0.100000, 0);
 unmount("/system");
 ui_print("Done");
 ui_print("Now install GAPPS");
 ui_print("Be sure to factory wipe");
 ui_print("If coming from stock ROM");
-ui_print("You Fucking Freak");
 
 
 
