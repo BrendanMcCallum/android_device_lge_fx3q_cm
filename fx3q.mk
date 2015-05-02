@@ -21,9 +21,40 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 #$(call inherit-product-if-exists, vendor/lge/fx3q/fx3q-vendor-blobs.mk)
 $(call inherit-product, vendor/lge/fx3q/fx3q-vendor-blobs.mk)
 
+# Using prebuilt kernel
+LOCAL_PATH := device/lge/fx3q
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+        PRODUCT_COPY_FILES += \
+            $(LOCAL_PATH)/kernel:kernel
+else
+        PRODUCT_COPY_FILES += \
+            $(TARGET_PREBUILT_KERNEL):kernel
+endif
+
+# well even when we have this defined in the vendor-blobs we NEED this HERE.
 PRODUCT_COPY_FILES += \
     vendor/lge/fx3q/proprietary/lib/libqdutils.so:obj/lib/libqdutils.so
 
+# Copy LGE init files (CHECKING NEEDED WHICH ARE NEEDED AND WHICH NOT!)
+# (in Boardconfig: TARGET_PROVIDES_INIT_RC need to be true)
+PRODUCT_COPY_FILES += \
+        device/lge/fx3q/ramdisk/fstab.qcom:root/fstab.qcom \
+        device/lge/fx3q/ramdisk/init.fx3q.rc:root/init.fx3q.rc \
+        device/lge/fx3q/ramdisk/init.fx3.rc:root/init.fx3.rc \
+        device/lge/fx3q/ramdisk/init.lge.rc:root/init.lge.rc \
+        device/lge/fx3q/ramdisk/init.lge.usb.rc:root/init.lge.usb.rc \
+        device/lge/fx3q/ramdisk/init.qcom.rc:root/init.qcom.rc \
+        device/lge/fx3q/ramdisk/init.lge.usb.sh:root/init.lge.usb.sh \
+        device/lge/fx3q/ramdisk/init.qcom.sh:root/init.qcom.sh \
+        device/lge/fx3q/ramdisk/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
+        device/lge/fx3q/ramdisk/init.lge.cmm.usb.sh:root/init.lge.cmm.usb.sh \
+        device/lge/fx3q/ramdisk/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+        device/lge/fx3q/ramdisk/init.rc:root/init.rc \
+        device/lge/fx3q/ramdisk/init.lge.early.rc:root/init.lge.early.rc \
+        device/lge/fx3q/ramdisk/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
+        device/lge/fx3q/ramdisk/init.trace.rc:root/init.trace.rc \
+        device/lge/fx3q/ramdisk/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
+        device/lge/fx3q/ramdisk/init.usb.rc:root/init.usb.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -283,10 +314,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.radio.use_cc_names=true
 
-# For userdebug builds
+# Since Android 4.2.2, USB debugging requires authentication, something that is not possible during boot. 
+# To disable this, set the following property in default.prop (inside initrd):
+# ro.adb.secure=0
+# To get root access this is a must:
+# ro.secure=0
+# will allow you to run adbd as root via the adb root command:
+#ro.debuggable=1
+#service.adb.root=1
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.adb.secure=0 \
+    ro.debuggable=1 \
+    service.adb.root=1 \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1
 

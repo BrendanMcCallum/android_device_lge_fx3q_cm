@@ -51,7 +51,7 @@ for FILE in `cat ramdisk-files.txt | grep -v ^# | grep -v ^$`; do
     if [ $COUNT = "0" ]; then
         LINEEND=""
     fi
-    echo "    $RAMDIR/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
+    echo "    $RAMDIR/$FILE:root/$FILE$LINEEND" >> $MAKEFILE
 done
 
 

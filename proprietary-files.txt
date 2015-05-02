@@ -1,4 +1,5 @@
 bin/immvibed
+bin/rild
 etc/init.goldfish.sh
 etc/init.qcom.audio.sh
 etc/init.qcom.bt.sh

@@ -1,6 +1,7 @@
 # nasty build error:
 $(shell mkdir -p $(OUT_DIR)/target/product/fx3q/obj/SHARED_LIBRARIES/libqdutils_intermediates/)
 $(shell touch $(OUT_DIR)/target/product/fx3q/obj/SHARED_LIBRARIES/libqdutils_intermediates/import_includes)
+$(shell touch $(OUT_DIR)/target/product/fx3q/obj/SHARED_LIBRARIES/libqdutils_intermediates/export_includes)
 
 # fx3q HAL libraries
 BOARD_HAL_STATIC_LIBRARIES := \
@@ -30,7 +31,7 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK      := device/lge/fx3q/releasetools/mkbootimg.mk
 #BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache
-BOARD_KERNEL_CMDLINE         := CMDLINE WILL BE IGNORED BY KERNEL. SO YOU NEED TO CHANGE KERNEL WHEN YOU WANT OTHER BOOT ARGS. xdajog.
+BOARD_KERNEL_CMDLINE         := CMDLINE WILL BE IGNORED BY sediKERNEL. SO YOU NEED TO CHANGE KERNEL WHEN YOU WANT OTHER BOOT ARGS. xdajog.
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
@@ -38,19 +39,16 @@ TARGET_SPECIFIC_HEADER_PATH := device/lge/fx3q/include
 TARGET_NO_INITLOGO := true
 
 # Kernel build options either prebuilt:
-TARGET_PREBUILT_KERNEL := device/lge/fx3q/kernel
+TARGET_PREBUILT_KERNEL := device/lge/fx3q/sediKERNEL
 # ... or as recommended by CM - path to the sources and config:
 TARGET_KERNEL_SOURCE := kernel/lge/fx3q
-#TARGET_KERNEL_SOURCE := kernel/lge/fx3q_debugging
-TARGET_PRODUCT=fx3q_tmo_us
+TARGET_PRODUCT=sediROM_fx3q
 TARGET_KERNEL_CONFIG := fx3q_xdajog_defconfig
 # Use GCC 4.6 to compile the kernel as recommended by LG:
 ARM_EABI_TOOLCHAIN :=$(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin
 
-# CMDLINE WILL BE IGNORED BY KERNEL! SO YOU NEED TO CHANGE KERNEL WHEN YOU WANT OTHER BOOT ARGS. xdajog.
-
 # this will disable init.rc build and using LGE ones instead
-#TARGET_PROVIDES_INIT_RC := true
+TARGET_PROVIDES_INIT_RC := true
 
 # Krait optimizations
 ARCH_ARM_HAVE_NEON := true
@@ -203,7 +201,7 @@ TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/fx3q/releasetools/ota_from_target_files
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := LGMS500,fx3q,F3Q,D520
+TARGET_OTA_ASSERT_DEVICE := F3Q,D520,fx3q
 
 # Vibrator
 #BOARD_HAS_VIBRATOR_IMPLEMENTATION := ../../device/lge/fx3q/vibrator/tspdrv.c
